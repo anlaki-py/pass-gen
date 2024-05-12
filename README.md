@@ -1,4 +1,4 @@
-
+# Quick Jump Links
 
 - [Features](#features)
 - [For Linux](#for-linux)
@@ -96,17 +96,17 @@ To clear the log file, use the following command:
 - Python 3.x
 
 1. Install Python: 
-   - Download the latest version of Python from the official website: [Python Downloads](https://www.python.org/downloads/windows/).
-   - Run the installer and follow the installation instructions and make sure to Add Python to PATH.
-   - During the installation, make sure to check the option "Add Python to PATH" to easily run Python from the command prompt.
+- Download the latest version of Python from the official website: [Python Downloads](https://www.python.org/downloads/windows/).
+- Run the installer and follow the installation instructions and make sure to Add Python to PATH.
+- During the installation, make sure to check the option "Add Python to PATH" to easily run Python from the command prompt.
 
 
 ### Installation
 
 1. Download the source code:
-    - Click on `Code` then click on `Download ZIP`.
-    - Extract the downloaded zip file and navigate to the folder `password-gen-main`.
-    - Click on the path bar at the top and type `cmd` to open the terminal.
+- Click on `Code` then click on `Download ZIP`.
+- Extract the downloaded zip file and navigate to the folder `password-gen-main`.
+- Click on the path bar at the top and type `cmd` to open the terminal.
 
 ### Usage
 
