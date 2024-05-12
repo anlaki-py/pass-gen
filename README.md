@@ -39,7 +39,6 @@ cd ~
 sudo apt update -y
 sudo apt install git -y
 git clone https://github.com/anlaki-py/password-gen.git
-ls
 ```
 
 2. Navigate to the cloned repository:
