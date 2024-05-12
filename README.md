@@ -1,5 +1,3 @@
-# Quick Jump Links
-
 - [Features](#features)
 - [For Linux](#for-linux)
 - [For Windows 10/11](#for-windows-1011)
