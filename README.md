@@ -37,7 +37,7 @@ sudo apt install python3
 
 ### Installation
 
-Jump to your home directory:
+Jump to your home directory,(or you can choose any custom directory of your choice.):
 
 ```bash
 cd ~
