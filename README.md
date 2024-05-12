@@ -19,6 +19,13 @@ The Password Generator is designed to help users create strong passwords with ea
 
 - Python 3.x
 
+For debian based distributions:
+
+```bash
+sudo apt install python3
+```
+
+
 ### Installation
 
 Jump to your home directory:
