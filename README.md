@@ -1,4 +1,4 @@
-# Quick Jump Links
+
 
 - [Features](#features)
 - [For Linux](#for-linux)
