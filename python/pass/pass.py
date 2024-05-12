@@ -10,17 +10,16 @@ def generate_strong_password(length):
 def main():
     custom_length = 12  # Default password length
     try:
-        custom_length = int(input("Enter the custom length for the password: \n"))
+        custom_length = int(input("Custom length: "))
     except ValueError:
-        print("Invalid input. Using default password length.")
+        print("Invalid input. Using default length.", "(",custom_length, ")", " \n")
 
     password = generate_strong_password(custom_length)
     
     # Print the generated password
-    print(" ")
-    print("Generated Password:      ", password)
-    print(" ")
-    
+    print("Generated Password: \n")
+    print(password, " \n")
+    print("! save your password in a safe place.\n") 
     # Log the generated password in pass.txt
     log_file_path = os.path.join(os.path.expanduser("~"), "password-gen", "python", "pass", "pass.txt")
     with open(log_file_path, "a") as file:
