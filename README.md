@@ -37,6 +37,7 @@ cd ~
 1. Clone the repository to your local machine:
 ```bash
 sudo apt update -y \
+sudo apt install git -y \
 git clone https://github.com/anlaki-py/password-gen.git \
 ls
 ```
