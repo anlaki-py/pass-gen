@@ -2,7 +2,7 @@
 
 - [Features](#features)
 - [For Linux](#for-linux)
-- [For Windows 10/11](#for-windows-10-11)
+- [For Windows 10/11](#for-windows-1011)
 
 
 
