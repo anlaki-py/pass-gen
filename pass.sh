@@ -11,7 +11,7 @@ if [ "$1" = "cat" ]; then
         cat $log
         exit
     else
-        echo "Error: File is empty."
+        echo "Error: File is empty or not found."
         exit
     fi
 elif [ "$1" = "clear" ]; then
@@ -20,7 +20,7 @@ elif [ "$1" = "clear" ]; then
         echo "=> The log file has been successfully cleared."
         exit
     else
-        echo "Error: File is already cleared."
+        echo "Error: File is already cleared or deleted."
         exit
     fi
 fi
