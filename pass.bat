@@ -10,15 +10,17 @@ IF "%1"=="cat" (
     IF EXIST %log% (
         type %log%
     ) ELSE (
-        echo Error: File is empty or not found.
+        echo "Error: File is empty or not found."
     )
+    exit /b
 ) ELSE IF "%1"=="clear" (
     IF EXIST %log% (
         del %log%
-        echo => The log file has been successfully cleared.
+        echo "The log file has been successfully cleared."
     ) ELSE (
-        echo Error: File is already cleared or deleted.
+        echo "Error: File is already cleared or deleted."
     )
+    exit /b
 )
 
 py %py%
