@@ -19,7 +19,7 @@ def main():
     # Print the generated password
     print("Generated Password: \n")
     print(password, " \n")
-    print("! save your password in a safe place.\n") 
+    print("! save your password in a safe place.") 
     # Log the generated password in pass.txt
     log_file_path = os.path.join(os.path.expanduser("~"), "password-gen", "python", "pass", "pass.txt")
     with open(log_file_path, "a") as file:
