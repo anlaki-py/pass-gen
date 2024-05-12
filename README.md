@@ -21,6 +21,12 @@ The Password Generator is designed to help users create strong passwords with ea
 
 ### Installation
 
+Jump to your home directory:
+
+```bash
+cd ~
+```
+
 1. Clone the repository to your local machine:
 ```bash
 git clone https://github.com/anlaki-py/password-gen.git
