@@ -1,3 +1,12 @@
+# Quick Jump Links
+
+- [Features](#features)
+- [For Linux](#for-linux)
+- [For Windows 10/11](#for-windows-10-11)
+
+
+
+
 # Password Generator
 
 A simple and efficient command-line tool for generating strong and secure passwords.
@@ -13,7 +22,10 @@ The Password Generator is designed to help users create strong passwords with ea
 - **Logging:** Every generated password is logged into a file, allowing users to retrieve previously generated passwords if necessary.
 - **Simple CLI Commands:** The tool offers simple command-line options to view the password log or clear it.
 
-## Getting Started
+
+
+
+## For Linux:
 
 ### Prerequisites
 
@@ -25,7 +37,6 @@ For debian based systems:
 sudo apt install python3
 ```
 
-
 ### Installation
 
 Jump to your home directory:
@@ -35,6 +46,7 @@ cd ~
 ```
 
 1. Clone the repository to your local machine:
+
 ```bash
 sudo apt update -y
 sudo apt install git -y
@@ -42,6 +54,7 @@ git clone https://github.com/anlaki-py/password-gen.git
 ```
 
 2. Navigate to the cloned repository:
+
 ```bash
 cd password-gen
 ```
@@ -73,6 +86,52 @@ To clear the log file, use the following command:
 ```bash
 ./pass.sh clear
 ```
+
+
+
+## For Windows 10/11
+
+### Prerequisites
+
+- Python 3.x
+
+1. Install Python: 
+   - Download the latest version of Python from the official website: [Python Downloads](https://www.python.org/downloads/windows/).
+   - Run the installer and follow the installation instructions and make sure to Add Python to PATH.
+   - During the installation, make sure to check the option "Add Python to PATH" to easily run Python from the command prompt.
+
+
+### Installation
+
+1. Download the source code:
+    - Click on `Code` then click on `Download ZIP`.
+    - Extract the downloaded zip file and navigate to the folder `password-gen-main`.
+    - Click on the path bar at the top and type `cmd` to open the terminal.
+
+### Usage
+
+To generate a new password, simply run the following command:
+
+```bash
+pass
+```
+
+You will be prompted to enter a custom length for the password. If you press enter without specifying a length, the tool will generate a password with the default length of `12` characters.
+
+To view the log of generated passwords, use the following command:
+
+```bash
+pass cat
+```
+
+To clear/delete the log file, use the following command:
+
+```bash
+pass clear
+```
+
+
+
 
 ## Acknowledgments
 
