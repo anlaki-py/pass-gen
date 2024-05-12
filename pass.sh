@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#python path
+#python file path
 py="python/pass/pass.py"
 
 #log file path
