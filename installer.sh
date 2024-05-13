@@ -1,5 +1,7 @@
 #!/bin/bash
 
+chmod +x pass.sh && chmod +x uninstaller.sh
+
 file_path="pass.sh"
 destination="/usr/bin/pass"
 

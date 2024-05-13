@@ -1,0 +1,9 @@
+Available arguments:
+    {cat}     view generated passwords history.
+    {clear}   delete the log file.
+    {help}     view this help file.
+
+    !note: every generated password is stored in a log file.
+    use the argument {clear} to delete the log file.
+        
+    press [q] to exit. 
