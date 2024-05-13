@@ -46,21 +46,26 @@ Jump to your home directory:
 cd $HOME
 ```
 
-1. Clone the repository to your local machine:
+1. Update & install git:
 
 ```bash
 sudo apt update -y
 sudo apt install git -y
+```
+
+2. Clone the repository to your local machine:
+
+```bash
 git clone https://github.com/anlaki-py/password-gen.git
 ```
 
-2. Navigate to the cloned repository:
+3. Navigate to the cloned repository:
 
 ```bash
 cd password-gen
 ```
 
-3. Run the installer to add the script to `$PATH` :
+4. Run the installer to add the script to `$PATH` :
 - ( install for all users )
 
 ```bash
