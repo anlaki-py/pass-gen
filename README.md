@@ -46,7 +46,7 @@ Jump to your home directory:
 cd $HOME
 ```
 
-1. Update & install git:
+1. Update & install Git:
 
 ```bash
 sudo apt update -y
