@@ -6,87 +6,114 @@
     <title>Password Generator</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <nav>
+  <nav>
         <ul>
             <li><a href="#features">Features</a></li>
             <li><a href="#for-linux">For Linux</a></li>
             <li><a href="#for-windows-1011">For Windows 10/11</a></li>
         </ul>
     </nav>
-
-    <h1>Password Generator</h1>
-    <p>A simple and efficient command-line tool for generating strong and secure passwords.</p>
-	<a href="https://github.com/anlaki-py/password-gen" target="_blank">Click here to visit the Github repository.</a>
-
-    <h2>Overview</h2>
-    <p>The Password Generator is designed to help users create strong passwords with ease. It uses a combination of letters, digits, and punctuation symbols to generate passwords that are hard to crack. This tool is perfect for users who need to create a new password for their email, social media accounts, or any other platform requiring a secure password.</p>
-
-    <h2 id="features">Features</h2>
-    <ul>
-        <li><strong>Customizable Password Length:</strong> Users can specify the length of the password they want to generate. If no length is specified, the tool uses a default length of 12 characters.</li>
-        <li><strong>Secure Passwords:</strong> The generated passwords are a mix of uppercase and lowercase letters, digits, and special characters, making them highly secure.</li>
-        <li><strong>Logging:</strong> Every generated password is logged into a file, allowing users to retrieve previously generated passwords if necessary.</li>
-        <li><strong>Simple CLI Commands:</strong> The tool offers simple command-line options to view the password log or clear it.</li>
-    </ul>
-
-    <h2 id="for-linux">For Linux:</h2>
-    <h3>Prerequisites</h3>
-    <p>- Python 3.x</p>
-    <p>For debian based distros:</p>
-    <pre><code>sudo apt install python3</code></pre>
-
-    <h3>Installation</h3>
-    <p>Jump to your home directory:</p>
-    <pre><code>cd $HOME</code></pre>
-    <p>1. Update & install Git:</p>
-    <pre><code>sudo apt update -y
-sudo apt install git -y</code></pre>
-    <p>2. Clone the repository to your local machine:</p>
-    <pre><code>git clone https://github.com/anlaki-py/password-gen.git</code></pre>
-    <p>3. Navigate to the cloned repository:</p>
-    <pre><code>cd password-gen</code></pre>
-    <p>4. Run the installer to add the script to <code>$PATH</code> :</p>
-    <pre><code>chmod +x installer.sh
-./installer.sh</code></pre>
-
-    <h3>Uninstallation</h3>
-    <p>The uninstaller script will delete itself along with the directory it's in.</p>
-    <pre><code>./uninstaller.sh</code></pre>
-
-    <h3>Usage</h3>
-    <p>To generate a new password, simply use the command:</p>
-    <pre><code>pass</code></pre>
-    <p>- You will be prompted to enter a custom length for the password. If you press enter without specifying a length, the tool will generate a password with the default length of 12 characters.</p>
-
-    <h3>List of available arguments:</h3>
-    <table>
-        <tr>
-            <th>argument</th>
-            <th>description</th>
-        </tr>
-        <tr>
-            <td>pass cat</td>
-            <td>To view the log of generated passwords</td>
-        </tr>
-        <tr>
-            <td>pass clear</td>
-            <td>To clear the log file</td>
-        </tr>
-        <tr>
-            <td>pass help</td>
-            <td>For help</td>
-        </tr>
-    </table>
-
-    <h2 id="for-windows-1011">For Windows 10/11</h2>
-    <p>- In progress...</p>
-
-    <h2>Acknowledgments</h2>
-    <p>- This tool was created as a simple solution for generating secure passwords. It is intended for personal use and is not recommended for generating passwords for highly sensitive accounts.</p>
-
-    <h2>License</h2>
-    <p>anlaki</p>
-    <p>None.</p>
-</body>
-</html>
+<h1 id="password-generator">Password Generator</h1>
+<p>A simple and efficient command-line tool for generating strong and secure passwords.</p>
+<h2 id="overview">Overview</h2>
+<p>The Password Generator is designed to help users create strong passwords with ease. It uses a combination of letters, digits, and punctuation symbols to generate passwords that are hard to crack. This tool is perfect for users who need to create a new password for their email, social media accounts, or any other platform requiring a secure password.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><p><strong>Customizable Password Length:</strong> 
+Users can specify the length of the password they want to generate. If no length is specified, the tool uses a default length of 12 characters.</p>
+</li>
+<li><p><strong>Secure Passwords:</strong>
+The generated passwords are a mix of uppercase and lowercase letters, digits, and special characters, making them highly secure.</p>
+</li>
+<li><p><strong>Logging:</strong>
+Every generated password is logged into a file, allowing users to retrieve previously generated passwords if necessary.</p>
+</li>
+<li><p><strong>Simple CLI Commands:</strong>
+The tool offers simple command-line options to view the password log or clear it.</p>
+</li>
+</ul>
+<hr>
+<h2 id="for-linux">For Linux:</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Python 3.x</li>
+</ul>
+<p>For debian based didtros:</p>
+<pre><code class="language-bash">sudo apt install python3
+</code></pre>
+<h3 id="installation">Installation</h3>
+<p>Jump to your home directory:</p>
+<pre><code class="language-bash">cd $HOME
+</code></pre>
+<ol>
+<li>Update &amp; install Git:</li>
+</ol>
+<pre><code class="language-bash">sudo apt update -y
+sudo apt install git -y
+</code></pre>
+<ol start="2">
+<li>Clone the repository to your local machine:</li>
+</ol>
+<pre><code class="language-bash">git clone https://github.com/anlaki-py/password-gen.git
+</code></pre>
+<ol start="3">
+<li>Navigate to the cloned repository:</li>
+</ol>
+<pre><code class="language-bash">cd password-gen
+</code></pre>
+<ol start="4">
+<li>Run the installer to add the script to <code>$PATH</code> :</li>
+</ol>
+<ul>
+<li>( install for all users )</li>
+</ul>
+<pre><code class="language-bash">chmod +x installer.sh
+./installer.sh
+</code></pre>
+<h3 id="usage">Usage</h3>
+<p>To generate a new password, simply use the command:</p>
+<pre><code class="language-bash">pass
+</code></pre>
+<ul>
+<li>You will be prompted to enter a custom length for the password. If you press enter without specifying a length, the tool will generate a password with the default length of <code>12</code> characters.</li>
+</ul>
+<h3 id="list-of-avaliable-arguments">list of avaliable arguments:</h3>
+<ul>
+<li>Simply use the command <code>pass</code> followed by the argument. <table>
+<thead>
+<tr>
+<th><em>argument</em></th>
+<th><em>description</em></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cat</td>
+<td>To view the log of generated passwords</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>To delete the log file</td>
+</tr>
+<tr>
+<td>help</td>
+<td>For  help</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="uninstall">uninstall</h3>
+<p>The uninstaller script will delete itself along with the directory it&#39;s in.</p>
+<pre><code class="language-bash">./uninstaller.sh
+</code></pre>
+<hr>
+<h2 id="for-windows-1011">For Windows 10/11</h2>
+<ul>
+<li>In progress...</li>
+</ul>
+<hr>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<ul>
+<li>This tool was created as a simple solution for generating secure passwords. It is intended for personal use and is not recommended for generating passwords for highly sensitive accounts.</li>
+</ul>
+<h2 id="license">License</h2>
+<p>None.</p>
