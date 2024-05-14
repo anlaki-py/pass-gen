@@ -1,7 +1,7 @@
 #!/bin/bash
 
 passfile="/usr/bin/pass"
-passgen="$HOME/password-gen"
+passgen="$HOME/pass-gen"
 removed=false
 
 if [ -f "$passfile" ]; then
