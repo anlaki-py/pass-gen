@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #python file path
-py="$HOME/password-gen/python/pass/pass.py"
+py="$HOME/pass-gen/python/pass/pass.py"
 
 #log file path
-log="$HOME/password-gen/python/pass/pass.log"
+log="$HOME/pass-gen/python/pass/pass.log"
 
 #help
-help="$HOME/password-gen/python/pass/help.txt"
+help="$HOME/pass-gen/python/pass/help.txt"
 
 if [ "$1" = "cat" ]; then
     if [ -f $log ]; then
