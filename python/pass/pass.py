@@ -21,7 +21,7 @@ def main():
     print(password, " \n") 
     # Log the generated password in pass.log
     home_dir = os.path.expanduser('~')
-    log_file_path = os.path.join(home_dir, "password-gen",  "python", "pass", "pass.log")
+    log_file_path = os.path.join(home_dir, "pass-gen",  "python", "pass", "pass.log")
     with open(log_file_path, "a") as file:
         file.write(password + "\n\n")
 
