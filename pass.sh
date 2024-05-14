@@ -6,7 +6,7 @@ py="$HOME/pass-gen/python/pass/pass.py"
 #log file path
 log="$HOME/pass-gen/python/pass/pass.log"
 
-#help
+#help file path
 help="$HOME/pass-gen/python/pass/help.txt"
 
 if [ "$1" = "cat" ]; then
