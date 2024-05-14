@@ -56,13 +56,13 @@ sudo apt install git -y
 2. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/anlaki-py/password-gen.git
+git clone https://github.com/anlaki-py/pass-gen.git
 ```
 
 3. Navigate to the cloned repository:
 
 ```bash
-cd password-gen
+cd pass-gen
 ```
 
 4. Run the installer to add the script to `$PATH` :
