@@ -2,13 +2,13 @@
 - [For Linux](#for-linux)
 - [For Windows 10/11](#for-windows-1011)
 
-# Password Generator
+# PASS-GEN
 
-A simple and efficient command-line tool for generating strong and secure passwords.
+pass-gen is a simple and efficient command-line tool for generating strong and secure passwords.
 
 ## Overview
 
-The Password Generator is designed to help users create strong passwords with ease. It uses a combination of letters, digits, and punctuation symbols to generate passwords that are hard to crack. This tool is perfect for users who need to create a new password for their email, social media accounts, or any other platform requiring a secure password.
+pass-gen is designed to help users create strong passwords with ease. It uses a combination of letters, digits, and punctuation symbols to generate passwords that are hard to crack. This tool is perfect for users who need to create a new password for their email, social media accounts, or any other platform requiring a secure password.
 
 ## Features
 
