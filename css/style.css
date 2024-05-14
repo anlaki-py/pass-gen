@@ -59,13 +59,13 @@ td {
 :root {
     --background-color-light: #fff;
     --text-color-light: #000;
-    --title-color-light: #333; /* Assuming #333 is your preferred title color in light mode */
-    --code-background-light: #f4f4f4; /* Light mode code background */
+    --title-color-light: #333; 
+    --code-background-light: #f4f4f4; 
     
     --background-color-dark: #28292c;
     --text-color-dark: #d8dbe0;
-    --title-color-dark: #fff; /* White or any light color for titles in dark mode */
-    --code-background-dark: #333; /* Dark mode code background */
+    --title-color-dark: #fff; 
+    --code-background-dark: #333; 
 }
 
 body.light-mode {
@@ -73,13 +73,13 @@ body.light-mode {
     color: var(--text-color-light);
 }
 
-body.light-mode h1, body.light-mode h2, body.light-mode h3 { /* Add other heading tags as needed */
+body.light-mode h1, body.light-mode h2, body.light-mode h3 { 
     color: var(--title-color-light);
 }
 
 body.light-mode pre, body.light-mode code, body.light-mode td,body.light-mode tr, body.light-mode li, body.light-mode ul {
     background-color: var(--code-background-light);
-    color: var(--text-color-light); /* Or any other color you prefer for code in light mode */
+    color: var(--text-color-light); 
 }
 
 body.dark-mode {
@@ -87,13 +87,13 @@ body.dark-mode {
     color: var(--text-color-dark);
 }
 
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode tr, body.dark-mode td, body.dark-mode li, body.dark-mode ul, body.dark-mode em, body.dark-mode tbody, body.dark-mode thead { /* Add other heading tags as needed */
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode tr, body.dark-mode td, body.dark-mode li, body.dark-mode ul, body.dark-mode em, body.dark-mode tbody, body.dark-mode thead { 
     color: var(--title-color-dark);
 }
 
 body.dark-mode pre, body.dark-mode code {
     background-color: var(--code-background-dark);
-    color: var(--text-color-dark); /* Or any other color you prefer for code in dark mode */
+    color: var(--text-color-dark); 
 }
 
 .toggle-switch {
