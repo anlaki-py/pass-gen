@@ -86,11 +86,14 @@ pass
 ### list of avaliable arguments:
 
 - Simply use the command `pass` followed by the argument. 
+
+
 | _argument_ | _description_ |
 | --- | --- |
 | cat | To view the log of generated passwords |
 | clear | To delete the log file |
 | help | For  help |
+
 
 ### uninstall
 The uninstaller script will delete itself along with the directory it's in.
