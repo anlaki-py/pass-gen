@@ -73,13 +73,6 @@ chmod +x installer.sh
 ./installer.sh
 ```
 
-### uninstall
-The uninstaller script will delete itself along with the directory it's in.
-
-```bash
-./uninstaller.sh
-```
-
 ### Usage
 
 To generate a new password, simply use the command:
@@ -88,15 +81,23 @@ To generate a new password, simply use the command:
 pass
 ```
 
-- You will be prompted to enter a custom length for the password. If you press enter without specifying a length, the tool will generate a password with the default length of 12 characters.
+- You will be prompted to enter a custom length for the password. If you press enter without specifying a length, the tool will generate a password with the default length of `12` characters.
 
 ### list of avaliable arguments:
 
-| argument | description |
-| ------ | ------ |
-| pass cat | To view the log of generated passwords |
-| pass clear | To clear the log file |
-| pass help | For  help |
+- Simply use the command `pass` followed by the argument. 
+| _argument_ | _description_ |
+| --- | --- |
+| cat | To view the log of generated passwords |
+| clear | To delete the log file |
+| help | For  help |
+
+### uninstall
+The uninstaller script will delete itself along with the directory it's in.
+
+```bash
+./uninstaller.sh
+```
 
 ------
 
@@ -110,6 +111,4 @@ pass
 - This tool was created as a simple solution for generating secure passwords. It is intended for personal use and is not recommended for generating passwords for highly sensitive accounts.
  
 ## License
-
-#### anlaki
 None.
