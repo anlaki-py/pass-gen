@@ -38,5 +38,4 @@ elif [ "$#" -ne 1 ]; then
     echo "Usage: pass <length>"
     exit 1
 fi
-
     python3 $py "$1"

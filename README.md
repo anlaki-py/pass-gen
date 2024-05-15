@@ -69,6 +69,7 @@ cd pass-gen
 - ( install for all users )
 
 ```bash
+# make installer.sh executable.
 chmod +x installer.sh
 ./installer.sh
 ```
@@ -79,10 +80,13 @@ To generate a new password, simply use the
 command `pass` followed by the length [required]:
 
 ```bash
+# replace <length> with a number. 
 pass <length>
 ```
 
-- You will be prompted to enter a custom length for the password. If you press enter without specifying a length, the tool will generate a password with the default length of `12` characters.
+- You will be prompted to enter a custom length for 
+the password. If you press enter without specifying a length, 
+the tool will generate a password with the default length of `12` characters.
 
 ### list of avaliable arguments:
 
@@ -113,7 +117,9 @@ The uninstaller script will delete itself along with the directory it's in.
 
 ## Acknowledgments
 
-- This tool was created as a simple solution for generating secure passwords. It is intended for personal use and is not recommended for generating passwords for highly sensitive accounts.
+- This tool was created as a simple solution for 
+generating secure passwords. It is intended for personal use 
+and is not recommended for generating passwords for highly sensitive accounts.
  
 ## License
 None.
