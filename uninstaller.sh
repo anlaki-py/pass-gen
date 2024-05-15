@@ -1,7 +1,7 @@
 #!/bin/bash
 
-passfile="/usr/bin/pass"
-passgen="$HOME/pass-gen"
+passfile="/usr/local/bin/pass" # install location
+passgen="$HOME/pass-gen" # programe folder
 removed=false
 
 if [ -f "$passfile" ]; then

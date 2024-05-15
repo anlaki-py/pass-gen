@@ -3,7 +3,7 @@
 chmod +x pass.sh && chmod +x uninstaller.sh
 
 file_path="pass.sh"
-destination="/usr/bin/pass"
+destination="/usr/local/bin/pass" # install location
 
 if [ ! -f "$file_path" ]; then
     echo "Error: '$file_path' does not exist."
