@@ -1,3 +1,4 @@
+import argparse
 import random
 import string
 import os
@@ -8,23 +9,26 @@ def generate_strong_password(length):
     return password
 
 def main():
-    custom_length = 12  # Default password length
-    try:
-        custom_length = int(input("Enter length: "))
-    except ValueError:
-        print("Invalid input. Using default length.", "(",custom_length, ")")
+    # Set up the command line arguments
+    parser = argparse.ArgumentParser(description="Generate a strong password.")
+    parser.add_argument('length', type=int, help='Length of the generated password')
 
-    password = generate_strong_password(custom_length)
-    
-    # Print the generated password
-    print("Generated Password: \n")
-    print(password, " \n") 
-    # Log the generated password in pass.log
-    home_dir = os.path.expanduser('~')
-    log_file_path = os.path.join(home_dir, "pass-gen",  "python", "pass", "pass.log")
-    with open(log_file_path, "a") as file:
-        file.write(password + "\n\n")
+    args = parser.parse_args()  # This will automatically parse and return the command-line arguments
+
+    custom_length = args.length  # Use the argument passed from the command line instead
+
+    try:
+        password = generate_strong_password(custom_length)
+
+        print("Generated Password: \n")
+        print(password, " \n")
+
+        home_dir = os.path.expanduser('~')
+        log_file_path = os.path.join(home_dir, "pass-gen/python/pass",  "pass.log")
+        with open(log_file_path, "a") as file:
+            file.write(password + "\n\n")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     main()
-
