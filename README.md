@@ -88,12 +88,12 @@ pass
 - Simply use the command `pass` followed by the argument. 
 
 
-| _argument_ | _description_ |
-| --- | --- |
-| <lenght> | a number to specify the length [required] |
-| cat | To view the log of generated passwords |
-| clear | To delete the log file |
-| help | For  help |
+| _argument_ | _description_                             |
+| ----       | ----                                      |
+| `{lenght}` | a number to specify the length [required] |
+| `cat`      | To view the log of generated passwords    |
+| `clear`    | To delete the log file                    |
+| `help`     | For  help                                 |
 
 
 ### uninstall
