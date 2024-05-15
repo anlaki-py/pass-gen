@@ -34,6 +34,9 @@ elif [ "$1" = "help" ]; then
 	echo Error: file not found.
         exit	
     fi
+elif [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <length>"
+    exit 1
 fi
 
-    python3 $py 
+    python3 $py "$1"
