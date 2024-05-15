@@ -35,7 +35,7 @@ elif [ "$1" = "help" ]; then
         exit	
     fi
 elif [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <length>"
+    echo "Usage: pass <length>"
     exit 1
 fi
 
