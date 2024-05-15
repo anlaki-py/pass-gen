@@ -33,3 +33,12 @@ Keep in mind that PyInstaller packages everything needed to run your script, inc
 Also, be aware that while PyInstaller makes your script into a standalone executable, it doesn't truly "compile" your Python in the same way a C++ compiler would. The Python code is still interpreted, and the original script can be extracted and viewed. If you need to protect the source code of your Python script, you'll need to use additional tools or methods to obfuscate the code.
 
 For more detailed instructions and options, you can refer to the [PyInstaller Documentation](https://www.pyinstaller.org/).
+
+# Note
+The output of PyInstaller is specific to the active operating system and the active version of Python. This means that to prepare a distribution for:
+
+- a different OS
+- a different version of Python
+- a 32-bit or 64-bit OS
+
+you run PyInstaller on that OS, under that version of Python. The Python interpreter that executes PyInstaller is part of the bundle, and it is specific to the OS and the word size.
