@@ -84,10 +84,6 @@ command `pass` followed by the length [required]:
 pass <length>
 ```
 
-- You will be prompted to enter a custom length for 
-the password. If you press enter without specifying a length, 
-the tool will generate a password with the default length of `12` characters.
-
 ### list of avaliable arguments:
 
 - Simply use the command `pass` followed by the argument. 
