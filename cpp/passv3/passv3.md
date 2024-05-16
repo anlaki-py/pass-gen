@@ -1,3 +1,6 @@
+passv3.cpp
+==================
+
 1. **Password Strength Selection:** Allow users to choose the strength of the password (e.g., weak, medium, strong, very strong) that adjusts the characters set used or the length of the password.
 
 2. **Help Option:** A `-h` or `--help` option to display usage instructions and descriptions of all available commands and options.
