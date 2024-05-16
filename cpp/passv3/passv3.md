@@ -17,7 +17,7 @@ passv3.cpp
 
 8. **Save To Custom File:** Instead of hardcoding the file `pass.log`, allow users to specify a custom file path to save the generated password(s) using an option like `-f` or `--file`.
 
-Here's how you could start implementing some of these suggestions in your code:
+Code:
 
 ```cpp
 #include <iostream>
@@ -82,11 +82,11 @@ int main(int argc, char* argv[]) {
 }
 ```
 
-This is a base structure to get you started. You'll need to expand the argument parsing to handle all the new options and implement their functionalities accordingly. Depending on your platform, you might find libraries like `getopt` (on Unix-like systems) or third-party libraries like `Boost.Program_options` helpful for parsing command-line arguments more efficiently
-# How to use
-Creating a README file for your GitHub repository is a great way to introduce and explain your project to others. Below is a template README.md content for your password generator CLI (Command Line Interface) application. You can adjust the content as necessary to better fit the specifics of your project and any additional features or changes you make.
+This is a base structure to get you started. You'll need to expand the argument parsing to handle all the new options and implement their functionalities accordingly. Depending on your platform, you might find libraries like `getopt` (on Unix-like systems) or third-party libraries like `Boost.Program_options` helpful for parsing command-line arguments more efficiently.
 
-# Password Generator CLI
+# How to use
+
+## Password Generator CLI
 
 A simple, yet powerful command line interface (CLI) application to generate strong, random passwords with customizable options for length, character sets, and more.
 
