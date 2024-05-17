@@ -150,3 +150,29 @@ and is not recommended for generating passwords for highly sensitive accounts.</
 
 
 
+
+
+
+<audio id="myAudio" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  window.onload = function() {
+    var myAudio = document.getElementById("myAudio");
+    myAudio.volume = 0;
+    myAudio.play();
+    fadeIn(myAudio, 0, 0.5, 5000);
+  }
+
+  function fadeIn(audio, targetVolume, duration, step) {
+    var currentVolume = audio.volume;
+    var volChange = (targetVolume - currentVolume) / (duration / step);
+    if (currentVolume < targetVolume) {
+      setTimeout(function() {
+        audio.volume += volChange;
+        fadeIn(audio, targetVolume, duration, step);
+      }, step);
+    }
+  }
+</script>
