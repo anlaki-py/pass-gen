@@ -1,7 +1,7 @@
 /* This is your Button styling */
 .Btn {
     margin-top: 3%; /* Sets the top margin of the card to 0 */
-    margin-bottom: auto%; /* Sets the bottom margin of the card to auto, pushing it to the top */
+    margin-bottom: auto; /* Sets the bottom margin of the card to auto, pushing it to the top */
     margin-left: 2%; /* Sets the left margin to auto, centering it horizontally */
     margin-right: auto
     top: 50px; /* adjust as needed */

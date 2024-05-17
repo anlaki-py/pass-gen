@@ -3,7 +3,7 @@ body {
     line-height: 1.6;
     margin: 20px;
 	background-color: #03001C;
-	color: #e8e8e8;
+	color: #B6EADA;
 }
 
 nav ul {
@@ -23,11 +23,11 @@ nav ul li a {
 
 a:hover {
     text-decoration: underline;
-	color: #e8e8e8;
+	color: #B6EADA;
 }
 
 h1, h2, h3 {
-    color: #e8e8e8;
+    color: #B6EADA;
 }
 
 pre, code {
@@ -35,12 +35,12 @@ pre, code {
     padding: 5px;
     border-radius: 5px;
     font-family: 'Courier New', Courier, monospace;
-	color: #e8e8e8;
+	color: #B6EADA;
 }
 
 pre {
     overflow-x: auto;
-	color: #e8e8e8;
+	color: #B6EADA;
 }
 
 table {
@@ -55,10 +55,10 @@ table, th, td {
 
 th {
     background-color: #03001C;
-	color: #e8e8e8;
+	color: #B6EADA;
 }
 
 td {
     text-align: left;
-	color: #e8e8e8;
+	color: #B6EADA;
 }
