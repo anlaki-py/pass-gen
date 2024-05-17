@@ -8,15 +8,17 @@
 	<link rel="stylesheet" href="css/github.css">
 	<link rel="stylesheet" href="css/body.css">
 </head>
-
+<body>
 <!-- card -->
 <div class="card">
-   <div class="card__icon" style="font-size: 4em; color: white;">ᓚ₍ ^. .^₎</div>
+   <div class="card__icon" style="font-size: 4em; color: white;">₍^. .^₎</div>
    <div class="card__content">
       <p class="card__title">anlaki</p>
       <p class="card__description">anlaki ahh website lmao.</p>
    </div>
 </div>
+
+
 
 <!-- github -->
 <a href="https://github.com/anlaki-py">
@@ -27,8 +29,6 @@
 </a>
 
 
-
-
 <!-- repo -->
 
 <ul>
@@ -36,6 +36,31 @@
 <li><a href="#for-linux">For Linux</a></li>
 <li><a href="#for-windows-1011">For Windows 10/11</a></li>
 </ul>
+
+
+
+
+
+<!-- song -->
+<body>
+
+<audio id="backgroundMusic" src="song/song.mp3" loop></audio>
+
+<label class="switch">
+  <input class="toggle" type="checkbox">
+  <span class="slider"></span>
+  <span class="card-side"></span>
+</label>
+<input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+
+<script src="js/song.js"></script>
+</body>
+
+
+
+
+
+
 <h1 id="pass-gen">PASS-GEN</h1>
 <p>pass-gen is a simple and efficient command-line tool for generating strong and secure passwords.</p>
 <h2 id="overview">Overview</h2>
@@ -148,30 +173,8 @@ and is not recommended for generating passwords for highly sensitive accounts.</
 <p>None.</p>
 
 
+</body>
 
 
 
 
-<audio id="myAudio" loop>
-  <source src="song.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  window.onload = function() {
-    var myAudio = document.getElementById("myAudio");
-    myAudio.volume = 0;
-    myAudio.play();
-    fadeIn(myAudio, 0, 0.5, 5000);
-  }
-
-  function fadeIn(audio, targetVolume, duration, step) {
-    var currentVolume = audio.volume;
-    var volChange = (targetVolume - currentVolume) / (duration / step);
-    if (currentVolume < targetVolume) {
-      setTimeout(function() {
-        audio.volume += volChange;
-        fadeIn(audio, targetVolume, duration, step);
-      }, step);
-    }
-  }
-</script>
