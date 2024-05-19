@@ -10,7 +10,7 @@ const std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV
 
 std::string generate_strong_password(int length, bool include_uppercase, bool include_digits, bool include_symbols) {
     std::string password = "";
-    std::string char_set = "";
+    std::string char_set = "abcdefghijklmnopqrstuvwxyz"; // Ensure lowercase letters are included by default
 
     if (include_uppercase) {
         char_set += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -22,14 +22,12 @@ std::string generate_strong_password(int length, bool include_uppercase, bool in
         char_set += "!@#$%^&*()_-+=[]{}|;:,.<>? ";
     }
 
-    if (char_set.empty()) {
-        char_set = characters;
-    }
-
+    std::random_device rd; // Seed for the random number generator
+    std::mt19937 generator(rd()); // Standard mersenne_twister_engine seeded with rd()
     std::uniform_int_distribution<size_t> distribution(0, char_set.size() - 1);
 
     for (int i = 0; i < length; i++) {
-        password += char_set[distribution(std::mt19937(std::random_device()()))];
+        password += char_set[distribution(generator)]; // Use the same generator for all characters
     }
 
     return password;
@@ -37,9 +35,9 @@ std::string generate_strong_password(int length, bool include_uppercase, bool in
 
 int main(int argc, char* argv[]) {
     int length = 12;
-    bool include_uppercase = true;
-    bool include_digits = true;
-    bool include_symbols = true;
+    bool include_uppercase = false; // Default to false to allow command line control
+    bool include_digits = false;
+    bool include_symbols = false;
     bool log_password = true;
     bool version = false;
     std::string command = "generate";
@@ -57,7 +55,7 @@ int main(int argc, char* argv[]) {
 
     while (1) {
         int option_index = 0;
-        int c = getopt_long(argc, argv, "l:uds", long_options, &option_index);
+        int c = getopt_long(argc, argv, "l:udsnvh", long_options, &option_index);
 
         if (c == -1) {
             break;
@@ -68,6 +66,10 @@ int main(int argc, char* argv[]) {
                 break;
             case 'l':
                 length = std::stoi(optarg);
+                if (length <= 0) {
+                    std::cerr << "Error: Length must be greater than 0." << std::endl;
+                    return 1;
+                }
                 break;
             case 'u':
                 include_uppercase = true;
@@ -83,11 +85,35 @@ int main(int argc, char* argv[]) {
                 break;
             case 'v':
                 version = true;
-                break;
+                std::cout << "Password Generator Version 2.5" << std::endl;
+                return 0;
             case 'h':
                 std::cout << "Usage: " << argv[0] << " [options]" << std::endl;
                 std::cout << "Options:" << std::endl;
                 std::cout << "  -l, --length <length>     Set the length of the generated password (default: 12)" << std::endl;
-                std::cout << "  -u, --uppercase          Include uppercase letters in the generated password" << std::endl;
-                std::cout << "  -d, --digits            Include digits in the generated password" << std::endl;
-                std::cout << "  -s, --symbols 
+                std::cout << "  -u, --uppercase           Include uppercase letters in the generated password" << std::endl;
+                std::cout << "  -d, --digits              Include digits in the generated password" << std::endl;
+                std::cout << "  -s, --symbols             Include symbols in the generated password" << std::endl;
+                std::cout << "  -n, --no-log              Do not log the password to a file" << std::endl;
+                std::cout << "  -v, --version             Show version information" << std::endl;
+                std::cout << "  -h, --help                Show this help message" << std::endl;
+                return 0;
+        }
+    }
+
+    if (command == "generate") {
+        std::string password = generate_strong_password(length, include_uppercase, include_digits, include_symbols);
+        std::cout << "Generated Password: " << password << std::endl;
+
+        if (log_password) {
+            std::ofstream log_file("password_log", std::ios_base::app);
+            if (!log_file) {
+                std::cerr << "Error: Could not open log file for writing." << std::endl;
+                return 1;
+            }
+            log_file << password << std::endl;
+        }
+    }
+
+    return 0;
+}
