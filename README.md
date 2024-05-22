@@ -2,7 +2,7 @@
 - [For Linux](#for-linux)
 - [For Windows 10/11](#for-windows-1011)
 
-# PASS-GEN
+# [DEMO] PASS-GEN
 
 pass-gen is a simple and efficient command-line tool for generating strong and secure passwords.
 
