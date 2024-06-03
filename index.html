@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To My Love, Rui</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300&display=swap');
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to right, rgba(255, 236, 210, 0.8), rgba(252, 182, 159, 0.8)), url('https://images.unsplash.com/photo-1496439786094-81b5eace3d8b') no-repeat center center fixed;
+            background-size: cover;
             color: #333;
             text-align: center;
             padding: 50px;
@@ -23,11 +24,28 @@
         p {
             font-size: 1.2em;
             animation: fadeIn 2s ease-in-out;
+            margin: 10px 0;
         }
         .heart {
             color: #ff4081;
             font-size: 5em;
             animation: pulse 1.5s infinite;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .button:hover {
+            background-color: #ff7597;
+            transform: scale(1.1);
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -42,16 +60,27 @@
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
+        footer {
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <h1>To My Love, Rui</h1>
-    <p>Dearest Rui,</p>
-    <p>From the moment our eyes met, my world was forever changed. Your smile lights up my darkest days, and your touch fills my heart with warmth and love.</p>
-    <p>I am endlessly grateful for every moment we share, and I cherish the love we have built together. You are my best friend, my confidant, and my soulmate.</p>
+    <p>Dear Rui,</p>
+    <p>As I sit down to pen this letter, my heart is filled with so many emotions that I barely know where to begin. But I do know that I must express my love and gratitude for the beautiful, extraordinary person that you are. You have brought so much joy, laughter, and warmth into my life, and I cannot imagine a world without you in it.</p>
+    <p>From the moment our paths crossed, I knew that something special was happening. There was an undeniable spark between us, a connection so strong that it felt like fate had brought us together. Every moment we spent together was filled with joy, and I could not help but feel that I had found the person I was meant to share my life with.</p>
+    <p>Rui, you have the most incredible heart, filled with kindness, empathy, and a deep sense of compassion. Your unwavering support and understanding have meant the world to me, and I am so grateful for the love and care you have shown me. You have taught me to be a better person, and for that, I am eternally thankful.</p>
+    <p>Your laughter is infectious, and the way you light up a room is truly a sight to behold. Your passion for life and desire to make the world a better place is inspiring, and it has made me a better person. I am so lucky to have you as my partner, and I promise to love and cherish you for all the days of my life.</p>
+    <p>I love the way we can sit in silence together, just enjoying each other's presence, and how we can have deep, meaningful conversations that last for hours. I love how we can make each other laugh until our sides hurt, and how we can comfort each other during difficult times. I love how we can be ourselves around each other, without fear of judgment or rejection.</p>
+    <p>Rui, you are my soulmate, my best friend, and the love of my life. I am so proud to call you mine, and I cannot wait to see what the future holds for us. I promise to always be by your side, supporting you, and loving you unconditionally, just as you do for me.</p>
+    <p>Thank you for choosing me, for allowing me to be a part of your incredible journey. I am so grateful for the love we share, and I look forward to a lifetime of happiness and adventure with you.</p>
     <p class="heart">❤️</p>
-    <p>With you, I have found the missing piece of my heart, and I promise to love you more with each passing day.</p>
-    <p>Forever yours,</p>
+    <p>With all my love,</p>
     <p>Aki</p>
+    <a href="#" class="button">aki button</a>
+    <footer>&copy; 2025 Aki's Love Letters. All rights reserved.</footer>
 </body>
 </html>
