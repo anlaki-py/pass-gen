@@ -65,22 +65,51 @@
             font-size: 0.8em;
             color: #666;
         }
+        #login-form {
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+        }
+        #content {
+            display: none;
+        }
+        .hidden {
+            display: none;
+        }
     </style>
+    <script>
+        function showContent() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === 'rui' && password === 'aki') {
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('content').style.display = 'block';
+            } else {
+                alert('Incorrect username or password. Please try again.');
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>To My Love, Rui</h1>
-    <p>Dear Rui,</p>
-    <p>As I sit down to pen this letter, my heart is filled with so many emotions that I barely know where to begin. But I do know that I must express my love and gratitude for the beautiful, extraordinary person that you are. You have brought so much joy, laughter, and warmth into my life, and I cannot imagine a world without you in it.</p>
-    <p>From the moment our paths crossed, I knew that something special was happening. There was an undeniable spark between us, a connection so strong that it felt like fate had brought us together. Every moment we spent together was filled with joy, and I could not help but feel that I had found the person I was meant to share my life with.</p>
-    <p>Rui, you have the most incredible heart, filled with kindness, empathy, and a deep sense of compassion. Your unwavering support and understanding have meant the world to me, and I am so grateful for the love and care you have shown me. You have taught me to be a better person, and for that, I am eternally thankful.</p>
-    <p>Your laughter is infectious, and the way you light up a room is truly a sight to behold. Your passion for life and desire to make the world a better place is inspiring, and it has made me a better person. I am so lucky to have you as my partner, and I promise to love and cherish you for all the days of my life.</p>
-    <p>I love the way we can sit in silence together, just enjoying each other's presence, and how we can have deep, meaningful conversations that last for hours. I love how we can make each other laugh until our sides hurt, and how we can comfort each other during difficult times. I love how we can be ourselves around each other, without fear of judgment or rejection.</p>
-    <p>Rui, you are my soulmate, my best friend, and the love of my life. I am so proud to call you mine, and I cannot wait to see what the future holds for us. I promise to always be by your side, supporting you, and loving you unconditionally, just as you do for me.</p>
-    <p>Thank you for choosing me, for allowing me to be a part of your incredible journey. I am so grateful for the love we share, and I look forward to a lifetime of happiness and adventure with you.</p>
-    <p class="heart">❤️</p>
-    <p>With all my love,</p>
-    <p>Aki</p>
-    <a href="#" class="button">aki button</a>
-    <footer>&copy; 2025 Aki's Love Letters. All rights reserved.</footer>
+    <div id="login-form">
+        <h1>Login</h1>
+        <p>Who are you?</p>
+        <input type="text" id="username" placeholder="Name"><br><br>
+        <input type="password" id="password" placeholder="Your love"><br><br>
+        <button class="button" onclick="showContent()">Login</button>
+    </div>
+    <div id="content">
+        <h1>To My Love, Rui</h1>
+        <p>My Dearest Little Rui,</p>
+        <p>Every night as I lay in bed, I can't help but think of you, my cute little Rui. Your presence is my favorite toy, my cherished puppy, and my precious pet all rolled into one. I long for the moments when I can touch your delicate body, kiss your soft lips, and squeeze you tightly as if you were my beloved doll.</p>
+        <p>I dream of kidnapping you to Rizzland, where I can do all the sussiest things to you. You are mine, Rui. I own you, and I know you love it. You love those sus things a lot, don't you? The way you shake under my touch, the way your eyes light up when I call you my little Rui. </p>
+        <p>In this world, we belong to each other. My love for you is boundless, and I crave every moment where I can hold you close, whispering sweet nothings into your ear, reminding you that you are mine.</p>
+        <p>Forever yours,</p>
+        <p>Aki</p>
+        <p class="heart">❤️</p>
+        <footer>&copy; 2024 Aki's Love Letters. All rights reserved.</footer>
+    </div>
+    <script>
+        document.getElementById('login-form').style.display = 'block';
+    </script>
 </body>
 </html>
