@@ -9,4 +9,4 @@ chmod +x pass
 # Move the pass executable to a directory in your $PATH
 mv pass /usr/local/bin/
 
-echo "The pass executable has been successfully moved to the $PATH."
+echo "The pass executable has been successfully moved to the PATH."
