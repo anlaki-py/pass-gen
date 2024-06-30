@@ -24,7 +24,7 @@ install_pass_file() {
 # Check if pass file exists in the PATH
 if [ -f /usr/local/bin/pass ]; then
     echo "The pass file already exists in /usr/local/bin."
-    read -p "Do you want to uninstall it? (y/n) " choice
+    read -p "Do you want to uninstall it? (y/n) " choice </dev/tty
     case "$choice" in 
         y|Y ) remove_pass_file;;
         n|N ) echo "Skipping uninstallation.";;
