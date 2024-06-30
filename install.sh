@@ -10,12 +10,8 @@ remove_pass_file() {
 
 # Function to download and install the pass file
 install_pass_file() {
-    if [ -f ./pass ]; then
-        echo "Pass file already exists in the current directory. Skipping download."
-    else
-        echo "Downloading new pass file..."
-        curl -sSL -o pass https://raw.githubusercontent.com/anlaki-py/pass-gen/main/pass
-    fi
+    echo "Downloading new pass file..."
+    curl -sSL -o pass https://raw.githubusercontent.com/anlaki-py/pass-gen/main/pass
     chmod +x pass
     mv pass /usr/local/bin/
     echo "The pass executable has been successfully moved to the PATH."
@@ -27,10 +23,11 @@ if [ -f /usr/local/bin/pass ]; then
     read -p "Do you want to uninstall it? (y/n) " choice </dev/tty
     case "$choice" in 
         y|Y ) remove_pass_file;;
-        n|N ) echo "Skipping uninstallation.";;
-        * ) echo "Invalid choice. Exiting.";;
+        n|N ) echo "Removing the existing file and installing a new one."
+              remove_pass_file;;
+        * ) echo "Invalid choice. Exiting."; exit 1;;
     esac
-else
-    # Install new pass file
-    install_pass_file
 fi
+
+# Install new pass file
+install_pass_file
