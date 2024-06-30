@@ -7,7 +7,7 @@ if ! command -v pass &> /dev/null; then
         # Make the downloaded file executable
         if chmod +x pass; then
             # Move the pass executable to a directory in your $PATH
-            if mv pass /usr/local/bin/; then
+            if sudo mv pass /usr/local/bin/; then
                 echo "The pass executable has been successfully moved to the PATH."
             else
                 echo "Failed to move the pass executable to /usr/local/bin/"
