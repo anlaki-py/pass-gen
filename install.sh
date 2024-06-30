@@ -20,11 +20,15 @@ install_pass_file() {
 # Check if pass file exists in the PATH
 if [ -f /usr/local/bin/pass ]; then
     echo "The pass file already exists in /usr/local/bin."
-    read -p "Do you want to uninstall it? (y/n) " choice </dev/tty
+    echo "Choose an option:"
+    echo "1. Cancel (keep the current installed one)"
+    echo "2. Uninstall (remove and exit)"
+    echo "3. Update (remove and download/install again)"
+    read -p "Enter your choice (1/2/3): " choice </dev/tty
     case "$choice" in 
-        y|Y ) remove_pass_file;;
-        n|N ) echo "Removing the existing file and installing a new one."
-              remove_pass_file;;
+        1 ) echo "Keeping the current installed pass file. Exiting."; exit 0;;
+        2 ) remove_pass_file; echo "Uninstallation complete. Exiting."; exit 0;;
+        3 ) remove_pass_file; echo "Proceeding with update...";;
         * ) echo "Invalid choice. Exiting."; exit 1;;
     esac
 fi
