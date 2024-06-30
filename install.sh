@@ -4,7 +4,7 @@ set -e
 
 # Function to remove pass file
 remove_pass_file() {
-    rm /usr/local/bin/pass
+    rm -f /usr/local/bin/pass
     echo "Existing pass file removed."
 }
 
@@ -17,16 +17,11 @@ install_pass_file() {
     echo "The pass executable has been successfully moved to the PATH."
 }
 
+# Remove existing pass file if it exists
 if [ -f /usr/local/bin/pass ]; then
-    read -p "The pass file already exists. Do you want to remove it? (y/n): " choice
-    case "$choice" in 
-      y|Y ) remove_pass_file
-            install_pass_file;;
-      n|N ) echo "Existing pass file retained. Exiting script."
-            exit 0;;
-      * ) echo "Invalid input. Exiting script."
-          exit 1;;
-    esac
-else
-    install_pass_file
+    echo "The pass file already exists. Removing it..."
+    remove_pass_file
 fi
+
+# Install new pass file
+install_pass_file
