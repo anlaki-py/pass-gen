@@ -23,7 +23,11 @@ if [ -f "$INSTALL_DIR/pass" ]; then
             ;;
         3)
             echo "Uninstalling..."
-            sudo rm "$INSTALL_DIR/pass"
+            if [[ $EUID -eq 0 ]]; then
+                rm "$INSTALL_DIR/pass"
+            else
+                sudo rm "$INSTALL_DIR/pass"
+            fi
             echo "Uninstallation successful."
             exit 0
             ;;
@@ -39,8 +43,13 @@ g++ -o pass src/pass.cpp
 
 if [ $? -eq 0 ]; then
     # Install the program
-    sudo mv pass "$INSTALL_DIR/pass"
-    sudo chmod +x "$INSTALL_DIR/pass"  # Make it executable
+    if [[ $EUID -eq 0 ]]; then
+        mv pass "$INSTALL_DIR/pass"
+        chmod +x "$INSTALL_DIR/pass"  # Make it executable
+    else
+        sudo mv pass "$INSTALL_DIR/pass"
+        sudo chmod +x "$INSTALL_DIR/pass"  # Make it executable
+    fi
     echo "Installation successful! Try 'pass -h' to show help."
 else
     echo "Compilation failed!"
