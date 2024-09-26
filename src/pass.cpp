@@ -152,7 +152,7 @@ int main(int argc, char* argv[]) {
         } else if (arg == "-e") {
             easyToRead = true;
         } else if (arg == "-v") {
-            std::cout << "Password Generator v1.3" << std::endl; // Updated version code
+            std::cout << "PassGen v1.3" << std::endl;
             return 0;
         } else if (i == 1 && std::isdigit(arg[0])) {
             length = std::stoi(arg);
