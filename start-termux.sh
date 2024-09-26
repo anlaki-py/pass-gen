@@ -23,11 +23,7 @@ if [ -f "$INSTALL_DIR/pass" ]; then
             ;;
         3)
             echo "Uninstalling..."
-            if [[ $EUID -eq 0 ]]; then
-                rm "$INSTALL_DIR/pass"
-            else
-                sudo rm "$INSTALL_DIR/pass"
-            fi
+            rm "$INSTALL_DIR/pass"
             echo "Uninstallation successful."
             exit 0
             ;;
@@ -50,4 +46,3 @@ else
     echo "Compilation failed!"
     exit 1
 fi
-
