@@ -16,7 +16,7 @@ if [ -f "$INSTALL_DIR/pass" ]; then
     case "$choice" in
         1)
             echo "Installation canceled."
-            exit 0
+            exit 1
             ;;
         2)
             echo "Replacing the existing installation..."
@@ -29,7 +29,7 @@ if [ -f "$INSTALL_DIR/pass" ]; then
                 sudo rm "$INSTALL_DIR/pass"
             fi
             echo "Uninstallation successful."
-            exit 0
+            exit 1
             ;;
         *)
             echo "Invalid choice. Installation canceled."
