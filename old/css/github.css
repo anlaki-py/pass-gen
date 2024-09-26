@@ -1,0 +1,74 @@
+/* This is your Button styling */
+.Btn {
+    margin-top: 3%; /* Sets the top margin of the card to 0 */
+    margin-bottom: auto; /* Sets the bottom margin of the card to auto, pushing it to the top */
+    margin-left: 2%; /* Sets the left margin to auto, centering it horizontally */
+    margin-right: auto
+    top: 50px; /* adjust as needed */
+    left: 20px; /* adjust as needed */
+    /* Removes the border of the button */
+    border: none;
+    /* Makes the button corners rounded */
+    border-radius: 50%;
+    /* Sets the width of the button */
+    width: 45px;
+    /* Sets the height of the button */
+    height: 45px;
+    /* Centers the content within the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Adds a transition effect when the button state changes */
+    transition-duration: .4s;
+    /* Changes the cursor to a pointer when hovering over the button */
+    cursor: pointer;
+    /* Positions the button in the relative layer */
+    position: relative;
+    /* Sets the background color of the button */
+    background-color: #301E67;
+    /* Hides any content that overflows the button */
+    overflow: hidden;
+  }
+  
+  /* This is your SVG Icon styling */
+  .svgIcon {
+    /* Adds a transition effect when the SVG Icon state changes */
+    transition-duration: .3s;
+  }
+  
+  .svgIcon path {
+    /* Sets the fill color of the SVG path to white */
+    fill: white;
+  }
+  
+  /* This is your Text styling */
+  .text {
+    /* Positions the text in the absolute layer */
+    position: absolute;
+    /* Sets the color of the text to white */
+    color: rgb(255, 255, 255);
+    /* Sets the width of the text */
+    width: 120px;
+    /* Makes the text bold */
+    font-weight: 600;
+    /* Makes the text invisible by default */
+    opacity: 0;
+    /* Adds a transition effect when the Text state changes */
+    transition-duration: .4s;
+  }
+  
+  .Btn:hover {
+    width: 110px;
+    transition-duration: .4s;
+    border-radius: 30px;
+  }
+  
+  .Btn:hover .text {
+    opacity: 1;
+    transition-duration: .4s;
+  }
+  
+  .Btn:hover .svgIcon {
+    opacity: 0;
+    transition-duration: .3s;
+  }
