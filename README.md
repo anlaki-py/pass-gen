@@ -7,18 +7,18 @@ git clone https://github.com/anlaki-py/pass-gen.git
 cd pass-gen
 ```
 
-## Install/Uninstall
+## Compile & Install/Uninstall
 
 - make the script executable
 
 ```bash
-chmod +x start.sh 
+chmod +x compile.sh 
 ```
 
 - run the script
 
 ```bash
-./start.sh 
+./compile.sh 
 ```
 
 ## Options
