@@ -36,3 +36,7 @@ chmod +x compile.sh
 ```bash
 pass 12 -u -n
 ```
+
+## License
+
+PASS-GEN is open source and available under the [MIT License](LICENSE).
