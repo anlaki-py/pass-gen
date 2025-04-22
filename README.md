@@ -40,3 +40,5 @@ pass 12 -u -n
 ## License
 
 PASS-GEN is open source and available under the [MIT License](LICENSE).
+
+_Ai Generated_

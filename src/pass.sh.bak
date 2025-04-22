@@ -1,0 +1,189 @@
+#!/bin/bash
+
+# PASS-GEN by anlaki (@anlaki-py), converted to Bash
+
+# Default settings
+length=8
+include_uppercase=false
+include_numbers=false
+include_symbols=false
+easy_to_read=false
+version="1.3"
+
+# Character sets
+lowercase="abcdefghijklmnopqrstuvwxyz"
+uppercase="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+numbers="0123456789"
+symbols="!@#$%^&*()_-+={}[]|;:'\",.<>/?`~" # Added backtick and tilde for completeness
+
+# Function to display help message
+show_help() {
+    echo "Usage: $(basename "$0") [options]"
+    echo "Options:"
+    echo "  -l <length>         Specify the password length (default: 8)"
+    echo "  -u                  Include uppercase letters"
+    echo "  -n                  Include numbers"
+    echo "  -s                  Include symbols"
+    echo "  -e                  Generate an easy-to-remember password"
+    echo "  -v                  Show version"
+    echo "  -h                  Display this help message"
+    echo ""
+    echo "You can also specify length as the first argument without -l, e.g., $(basename "$0") 12"
+}
+
+# Function to generate a standard random password
+generate_password() {
+    local char_pool="$lowercase"
+    if "$include_uppercase"; then
+        char_pool+="$uppercase"
+    fi
+    if "$include_numbers"; then
+        char_pool+="$numbers"
+    fi
+    if "$include_symbols"; then
+        char_pool+="$symbols"
+    fi
+
+    # Use /dev/urandom and tr for efficient random character selection
+    # Get random bytes, convert to hex, then filter to get characters from the pool
+    # A more direct way using tr to pick from the pool:
+    # echo "$char_pool" | fold -w 1 | shuf | tr -d '\n' | head -c "$length"
+
+    # A common and effective method using /dev/urandom and tr
+    # Generate random bytes, translate them based on the character pool
+    # This might produce uneven distribution if the pool size isn't a power of 2,
+    # but it's generally sufficient for password generation.
+    # A safer approach is to generate more random bytes and filter.
+    # Let's use the shuf approach which is simpler and clearer in Bash for this.
+
+    # Create a string of random characters from the pool
+    local password=""
+    local pool_length=${#char_pool}
+    if [ "$pool_length" -eq 0 ]; then
+        echo "Error: No character types selected for standard password generation." >&2
+        exit 1
+    fi
+
+    # Generate random indices and pick characters
+    for (( i=0; i<length; i++ )); do
+        # Generate a random number between 0 and pool_length - 1
+        # Using $RANDOM (less secure) or shuf (better)
+        # index=$(( RANDOM % pool_length )) # Less secure for cryptographic use
+        index=$(shuf -i 0-$(($pool_length - 1)) -n 1)
+        password+="${char_pool:$index:1}"
+    done
+
+    echo "$password"
+}
+
+# Function to generate an easy-to-remember password (alternating consonant/vowel)
+generate_easy_password() {
+    local vowels="aeiouy"
+    local consonants="bcdfghjklmnpqrstvwxyz"
+    local password=""
+    local vowels_len=${#vowels}
+    local consonants_len=${#consonants}
+
+    if [ "$vowels_len" -eq 0 ] || [ "$consonants_len" -eq 0 ]; then
+         echo "Error: Vowel or consonant set is empty for easy password generation." >&2
+         exit 1
+    fi
+
+    for (( i=0; i<length; i++ )); do
+        if (( i % 2 == 0 )); then
+            # Add a consonant
+            index=$(shuf -i 0-$(($consonants_len - 1)) -n 1)
+            password+="${consonants:$index:1}"
+        else
+            # Add a vowel
+            index=$(shuf -i 0-$(($vowels_len - 1)) -n 1)
+            password+="${vowels:$index:1}"
+        fi
+    done
+
+    echo "$password"
+}
+
+
+# --- Argument Parsing ---
+
+# Check for length as the first argument
+if [ "$#" -gt 0 ] && [[ "$1" =~ ^[0-9]+$ ]]; then
+    length="$1"
+    shift # Remove the first argument
+fi
+
+# Parse options using getopts
+while getopts "l:unsfevh" opt; do
+    case $opt in
+        l)
+            # getopts handles the argument for -l
+            if [[ "$OPTARG" =~ ^[0-9]+$ ]]; then
+                length="$OPTARG"
+            else
+                echo "Error: -l option requires a numeric argument." >&2
+                exit 1
+            fi
+            ;;
+        u)
+            include_uppercase=true
+            ;;
+        n)
+            include_numbers=true
+            ;;
+        s)
+            include_symbols=true
+            ;;
+        e)
+            easy_to_read=true
+            ;;
+        v)
+            echo "PassGen v$version"
+            exit 0
+            ;;
+        h)
+            show_help
+            exit 0
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            show_help
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            show_help
+            exit 1
+            ;;
+    esac
+done
+
+# Shift off the options and their arguments
+shift $((OPTIND - 1))
+
+# --- Input Validation ---
+if [ "$length" -le 0 ]; then
+    echo "Error: Password length must be a positive number." >&2
+    exit 1
+fi
+
+if ! "$easy_to_read"; then
+    # If not easy-to-read, ensure at least one character type is selected
+    if ! "$include_uppercase" && ! "$include_numbers" && ! "$include_symbols"; then
+        # If no options are specified, default to lowercase only
+        # This matches the C++ default behavior when no flags are given
+        : # Do nothing, lowercase is already included by default
+    fi
+fi
+
+
+# --- Generate and Print Password ---
+if "$easy_to_read"; then
+    # For easy-to-read, ignore other options and use fixed sets
+    generate_easy_password "$length"
+else
+    generate_password "$length"
+fi
+
+exit 0
+

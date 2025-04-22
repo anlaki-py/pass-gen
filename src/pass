@@ -1,0 +1,120 @@
+#!/bin/bash
+
+# PASS-GEN by anlaki (@anlaki-py)
+
+version="PassGen v1.3"
+
+display_help() {
+    echo "Usage: $0 [options]"
+    echo "Options:"
+    echo "  -l <length>         Specify the password length (default: 8)"
+    echo "  -u                  Include uppercase letters"
+    echo "  -n                  Include numbers"
+    echo "  -s                  Include symbols"
+    echo "  -e                  Generate an easy-to-remember password"
+    echo "  -v                  Show version"
+    echo "  -h, --help          Display this help message"
+}
+
+length=8
+include_uppercase=false
+include_numbers=false
+include_symbols=false
+easy_to_remember=false
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help)
+            display_help
+            exit 0
+            ;;
+        -l)
+            shift
+            if [[ $# -eq 0 ]]; then
+                echo "Error: -l option requires an argument" >&2
+                exit 1
+            fi
+            length="$1"
+            if ! [[ "$length" =~ ^[0-9]+$ ]]; then
+                echo "Error: Length must be a number" >&2
+                exit 1
+            fi
+            ;;
+        -u)
+            include_uppercase=true
+            ;;
+        -n)
+            include_numbers=true
+            ;;
+        -s)
+            include_symbols=true
+            ;;
+        -e)
+            easy_to_remember=true
+            ;;
+        -v)
+            echo "$version"
+            exit 0
+            ;;
+        *)
+            if [[ $1 =~ ^[0-9]+$ ]]; then
+                length="$1"
+            else
+                echo "Error: Invalid argument: $1" >&2
+                exit 1
+            fi
+            ;;
+    esac
+    shift
+done
+
+if [[ "$easy_to_remember" == true ]]; then
+    consonants="bcdfghjklmnpqrstvwxz"
+    vowels="aeiouy"
+    password=""
+    for ((i=0; i<length; i++)); do
+        if (( i % 2 == 0 )); then
+            char=$(echo "$consonants" | fold -w1 | shuf | head -n1)
+        else
+            char=$(echo "$vowels" | fold -w1 | shuf | head -n1)
+        fi
+        password+="$char"
+    done
+else
+    characters="abcdefghijklmnopqrstuvwxyz"
+    "$include_uppercase" && characters+="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    "$include_numbers" && characters+="0123456789"
+    "$include_symbols" && characters+="!@#$%^&*()_-+={}[]|;:'\",.<>/?"
+    
+    password=$(echo "$characters" | fold -w1 | shuf -n "$length" | tr -d '\n')
+fi
+
+strength=0
+[[ ${#password} -ge 8 ]] && (( strength++ ))
+[[ "$password" =~ [A-Z] ]] && (( strength++ ))
+[[ "$password" =~ [0-9] ]] && (( strength++ ))
+symbol_pattern='!@#$%^&*()_+={}\[\]|;:'"'"'",.<>/?-'
+[[ "$password" =~ [$symbol_pattern] ]] && (( strength++ ))
+
+if [[ $strength -le 1 ]]; then
+    level=1
+elif [[ $strength -eq 2 || $strength -eq 3 ]]; then
+    level=2
+else
+    level=3
+fi
+
+red='\033[1;31m'
+yellow='\033[1;33m'
+green='\033[1;32m'
+reset='\033[0m'
+
+case $level in
+    1) color="$red" ;;
+    2) color="$yellow" ;;
+    3) color="$green" ;;
+esac
+
+printf "%b%s%b\n" "$color" "$password" "$reset"
+
+exit 0
