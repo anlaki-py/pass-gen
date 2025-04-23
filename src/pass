@@ -1,120 +1,157 @@
 #!/bin/bash
 
-# PASS-GEN by anlaki (@anlaki-py)
+# PASS-GEN v2.0 by anlaki (@anlaki-py)
+# Ai generated 
 
-version="PassGen v1.3"
+version="PassGen v3.1e"
 
 display_help() {
-    echo "Usage: $0 [options]"
-    echo "Options:"
-    echo "  -l <length>         Specify the password length (default: 8)"
-    echo "  -u                  Include uppercase letters"
-    echo "  -n                  Include numbers"
-    echo "  -s                  Include symbols"
-    echo "  -e                  Generate an easy-to-remember password"
-    echo "  -v                  Show version"
-    echo "  -h, --help          Display this help message"
+    cat <<EOF
+Usage: $0 [options]
+Options:
+  -l <length>         Password length (default: 24)
+  -u                  Include uppercase letters
+  -n                  Include numbers
+  -s                  Include symbols
+  -e                  Generate easy-to-remember password
+  --exclude-similar   Exclude similar characters (e.g., l, 1, I)
+  --exclude <chars>   Custom characters to exclude
+  --min-upper <num>   Minimum uppercase characters
+  --min-numbers <num> Minimum number characters
+  --min-symbols <num> Minimum symbol characters
+  --exclude-uppercase Exclude uppercase letters (overrides -u)
+  --exclude-numbers   Exclude numbers (overrides -n)
+  --exclude-symbols   Exclude symbols (overrides -s)
+  -v                  Show version
+  -h, --help          Display this help message
+EOF
 }
 
-length=8
-include_uppercase=false
-include_numbers=false
+length=24
+include_uppercase=true
+include_numbers=true
 include_symbols=false
 easy_to_remember=false
+exclude_similar=true
+exclude_chars=""
+min_upper=0
+min_numbers=0
+min_symbols=0
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        -h|--help)
-            display_help
-            exit 0
-            ;;
+        -h|--help) display_help; exit 0 ;;
         -l)
             shift
-            if [[ $# -eq 0 ]]; then
-                echo "Error: -l option requires an argument" >&2
-                exit 1
-            fi
-            length="$1"
-            if ! [[ "$length" =~ ^[0-9]+$ ]]; then
-                echo "Error: Length must be a number" >&2
-                exit 1
-            fi
+            [[ -z $1 ]] && { echo "Error: -l requires argument" >&2; exit 1; }
+            [[ $1 =~ ^[0-9]+$ ]] || { echo "Error: Invalid length" >&2; exit 1; }
+            length=$1
             ;;
-        -u)
-            include_uppercase=true
+        -u) include_uppercase=true ;;
+        -n) include_numbers=true ;;
+        -s) include_symbols=true ;;
+        -e) easy_to_remember=true ;;
+        --exclude-similar) exclude_similar=true ;;
+        --exclude)
+            shift
+            [[ -z $1 ]] && { echo "Error: --exclude requires argument" >&2; exit 1; }
+            exclude_chars+="$1"
             ;;
-        -n)
-            include_numbers=true
+        --min-upper|--min-numbers|--min-symbols)
+            opt=$1
+            shift
+            [[ -z $1 ]] && { echo "Error: $opt requires argument" >&2; exit 1; }
+            case $opt in
+                --min-upper) min_upper=$1 ;;
+                --min-numbers) min_numbers=$1 ;;
+                --min-symbols) min_symbols=$1 ;;
+            esac
             ;;
-        -s)
-            include_symbols=true
-            ;;
-        -e)
-            easy_to_remember=true
-            ;;
-        -v)
-            echo "$version"
-            exit 0
-            ;;
-        *)
-            if [[ $1 =~ ^[0-9]+$ ]]; then
-                length="$1"
-            else
-                echo "Error: Invalid argument: $1" >&2
-                exit 1
-            fi
-            ;;
+        --exclude-uppercase) include_uppercase=false ;;
+        --exclude-numbers) include_numbers=false ;;
+        --exclude-symbols) include_symbols=false ;;
+        -v) echo "$version"; exit 0 ;;
+        *) echo "Error: Invalid argument: $1" >&2; exit 1 ;;
     esac
     shift
 done
 
-if [[ "$easy_to_remember" == true ]]; then
+total_min=$((min_upper + min_numbers + min_symbols))
+if (( total_min > length )); then
+    echo "Error: Minimum requirements exceed password length" >&2
+    exit 1
+fi
+
+if (( min_upper > 0 )) && ! $include_uppercase; then
+    echo "Error: Minimum uppercase specified but uppercase excluded" >&2
+    exit 1
+fi
+
+if (( min_numbers > 0 )) && ! $include_numbers; then
+    echo "Error: Minimum numbers specified but numbers excluded" >&2
+    exit 1
+fi
+
+if (( min_symbols > 0 )) && ! $include_symbols; then
+    echo "Error: Minimum symbols specified but symbols excluded" >&2
+    exit 1
+fi
+
+generate_password() {
+    local lower="abcdefghjkmnpqrstuvwxyz"
+    local upper="ABCDEFGHJKMNPQRSTUVWXYZ"
+    local numbers="23456789"
+    local symbols="!@#%^&*()_+=[{]}|;:,<.>?/-"
+
+    if $exclude_similar; then
+        lower=${lower//[ilo]/}
+        upper=${upper//[ILO]/}
+        numbers=${numbers//[01]/}
+    fi
+
+    local pool=$lower
+    $include_uppercase && pool+=$upper
+    $include_numbers && pool+=$numbers
+    $include_symbols && pool+=$symbols
+    
+    [[ -n $exclude_chars ]] && pool=$(tr -d "$exclude_chars" <<< "$pool")
+
+    local password=$(LC_ALL=C tr -dc "$pool" < /dev/urandom | head -c "$length")
+
+    enforce_requirements() {
+        local -n chars=$1
+        local min=$2
+        local count=$(tr -dc "$chars" <<< "$password" | wc -c)
+        
+        while (( count < min )); do
+            local index=$((RANDOM % ${#password}))
+            local new_char=$(tr -dc "$chars" < /dev/urandom | head -c1)
+            password="${password:0:$index}$new_char${password:$((index + 1))}"
+            ((count++))
+        done
+    }
+
+    $include_uppercase && enforce_requirements upper $min_upper
+    $include_numbers && enforce_requirements numbers $min_numbers
+    $include_symbols && enforce_requirements symbols $min_symbols
+
+    echo "$password"
+}
+
+if $easy_to_remember; then
     consonants="bcdfghjklmnpqrstvwxz"
     vowels="aeiouy"
     password=""
     for ((i=0; i<length; i++)); do
         if (( i % 2 == 0 )); then
-            char=$(echo "$consonants" | fold -w1 | shuf | head -n1)
+            password+=${consonants:$((RANDOM % ${#consonants})):1}
         else
-            char=$(echo "$vowels" | fold -w1 | shuf | head -n1)
+            password+=${vowels:$((RANDOM % ${#vowels})):1}
         fi
-        password+="$char"
     done
 else
-    characters="abcdefghijklmnopqrstuvwxyz"
-    "$include_uppercase" && characters+="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    "$include_numbers" && characters+="0123456789"
-    "$include_symbols" && characters+="!@#$%^&*()_-+={}[]|;:'\",.<>/?"
-    
-    password=$(echo "$characters" | fold -w1 | shuf -n "$length" | tr -d '\n')
+    password=$(generate_password)
 fi
 
-strength=0
-[[ ${#password} -ge 8 ]] && (( strength++ ))
-[[ "$password" =~ [A-Z] ]] && (( strength++ ))
-[[ "$password" =~ [0-9] ]] && (( strength++ ))
-symbol_pattern='!@#$%^&*()_+={}\[\]|;:'"'"'",.<>/?-'
-[[ "$password" =~ [$symbol_pattern] ]] && (( strength++ ))
-
-if [[ $strength -le 1 ]]; then
-    level=1
-elif [[ $strength -eq 2 || $strength -eq 3 ]]; then
-    level=2
-else
-    level=3
-fi
-
-red='\033[1;31m'
-yellow='\033[1;33m'
-green='\033[1;32m'
-reset='\033[0m'
-
-case $level in
-    1) color="$red" ;;
-    2) color="$yellow" ;;
-    3) color="$green" ;;
-esac
-
-printf "%b%s%b\n" "$color" "$password" "$reset"
-
+echo "$password"
 exit 0
